@@ -1,0 +1,343 @@
+ <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>价格 - 电子白板控件</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            background-color: rgba(255,255,255,0.2);
+        }
+        
+        .hero {
+            background: white;
+            padding: 2rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .pricing-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .pricing-card.personal {
+            border-top: 4px solid #1976d2;
+        }
+        
+        .pricing-card.pro {
+            border-top: 4px solid #7b1fa2;
+            transform: scale(1.05);
+        }
+        
+        .pricing-card.standalone {
+            border-top: 4px solid #388e3c;
+        }
+        
+        .pricing-card.pro::before {
+            content: "推荐";
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            background: #7b1fa2;
+            color: white;
+            padding: 0.5rem 2rem;
+            transform: rotate(45deg);
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .plan-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        .price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+        
+        .price-period {
+            font-size: 1rem;
+            color: #666;
+        }
+        
+        .features {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+        
+        .features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .features li:before {
+            content: "✓";
+            color: #4caf50;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            width: 100%;
+            text-align: center;
+            margin-top: 1rem;
+        }
+        
+        .btn:hover {
+            background: #5a6fd8;
+        }
+        
+        .comparison {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-top: 2rem;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .comparison-table th {
+            background: #f8f9fa;
+            font-weight: bold;
+        }
+        
+        .comparison-table .feature-name {
+            font-weight: bold;
+            width: 200px;
+        }
+        
+        .comparison-table .available {
+            color: #4caf50;
+            font-weight: bold;
+        }
+        
+        .comparison-table .not-available {
+            color: #f44336;
+        }
+        
+        .note {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 1rem;
+            margin: 2rem 0;
+            border-radius: 5px;
+        }
+        
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .pricing-card.pro {
+                transform: none;
+            }
+            
+            .comparison-table {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">电子白板控件</div>
+                <ul class="nav-links">
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="updates.html">下载</a></li>
+                    <li><a href="pricing.html">价格</a></li>
+                    <li><a href="contact.html">联系方式</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>产品价格</h1>
+            <p>三个版本提供完整的源代码和技术支持服务</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="pricing-grid">
+            <!-- 个人版 -->
+            <div class="pricing-card personal">
+                <div class="plan-name">个人版源代码</div>
+                <div class="price">¥2,500</div>
+                <ul class="features">
+                    <li>源代码：提供</li>
+                    <li>免费同步升级：12个月</li>
+                    <li>免费技术支持：6个月</li>
+                    <li>开发技术文档：提供</li>
+                </ul>
+                <a href="contact.html" class="btn">与我联系</a>
+            </div>
+
+            <!-- 专业版 -->
+            <div class="pricing-card pro">
+                <div class="plan-name">专业版源代码</div>
+                <div class="price">¥5,600</div>
+                <ul class="features">
+                    <li>源代码：提供</li>
+                    <li>免费同步升级：24个月</li>
+                    <li>免费技术支持：9个月</li>
+                    <li>开发技术文档：提供</li>
+                </ul>
+                <a href="contact.html" class="btn">与我联系</a>
+            </div>
+
+            <!-- 单机版 -->
+            <div class="pricing-card standalone">
+                <div class="plan-name">单机版源代码</div>
+                <div class="price">¥24,000</div>
+                <ul class="features">
+                    <li>源代码：提供</li>
+                    <li>免费同步升级：24个月</li>
+                    <li>免费技术支持：12个月</li>
+                    <li>开发技术文档：提供</li>
+                </ul>
+                <a href="contact.html" class="btn">与我联系</a>
+            </div>
+        </div>
+
+        <div class="note">
+            <strong>购买说明：</strong>
+            <ul>
+                <li>所有价格均为一次性购买费用，包含完整的源代码</li>
+                <li>购买后提供详细的开发技术文档</li>
+                <li>提供免费同步升级和技术支持服务</li>
+                <li>支持定制开发，具体需求请联系我们</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 电子白板控件. 保留所有权利.</p>
+        </div>
+    </footer>
+</body>
+</html>

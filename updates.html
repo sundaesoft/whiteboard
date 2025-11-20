@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>更新记录 - 电子白板控件</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            background-color: rgba(255,255,255,0.2);
+        }
+        
+        .hero {
+            background: white;
+            padding: 2rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        .version-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .tab {
+            padding: 1rem 2rem;
+            background: #f8f9fa;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+        
+        .tab.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+        
+        .tab:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .content-section {
+            background: white;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .version-content {
+            display: none;
+        }
+        
+        .version-content.active {
+            display: block;
+        }
+        
+        .update-item {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .update-item:last-child {
+            border-bottom: none;
+        }
+        
+        .version-title {
+            font-size: 1.5rem;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+        
+        .version-date {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding-left: 1rem;
+        }
+        
+        .feature-list li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .feature-list li:before {
+            content: "•";
+            color: #667eea;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        .improvement {
+            background: #e8f5e8;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1rem 0;
+            border-left: 4px solid #4caf50;
+        }
+        
+        .addition {
+            background: #e3f2fd;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1rem 0;
+            border-left: 4px solid #2196f3;
+        }
+        
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .version-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .tab {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">电子白板控件</div>
+                <ul class="nav-links">
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="updates.html">下载</a></li>
+                    <li><a href="pricing.html">价格</a></li>
+                    <li><a href="contact.html">联系方式</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>产品更新记录</h1>
+            <p>了解各版本的功能改进和优化</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="version-tabs">
+            <div class="tab active" onclick="showVersion('personal')">个人版</div>
+            <div class="tab" onclick="showVersion('professional')">专业版</div>
+            <div class="tab" onclick="showVersion('standalone')">单机版</div>
+        </div>
+
+        <!-- 个人版更新记录 -->
+        <div class="version-content active" id="personal">
+            <div class="update-item">
+                <h3 class="version-title">WhiteBoard 2.3 演示版本</h3>
+                <div class="version-date">2009/08/01</div>
+                <a href="download/WhiteBoard_v2.3_Demo.rar" class="btn" style="display: inline-block; width: auto; margin: 0.5rem 0;">下载个人版</a>
+                <div class="improvement">
+                    <strong>完善功能：</strong>
+                    <ul class="feature-list">
+                        <li>修复屏幕截图时可能出现的花屏现象</li>
+                        <li>修复打印功能在没有安装打印机的情况下选择退出时出现的程序错误</li>
+                        <li>修复在游客模式下不能进行IE协同浏览的错误</li>
+                        <li>修复一方用户在移动图形，同时另一方用户删除图形引发的程序错误</li>
+                        <li>在文档协同浏览模式下，已经发送过的文件，不再重复发送，以节约带宽</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="update-item">
+                <h3 class="version-title">WhiteBoard 2.2 演示版本</h3>
+                <div class="version-date">2008/01/09</div>
+                <div class="addition">
+                    <strong>增加的功能:</strong>
+                    <ul class="feature-list">
+                        <li>增加同步功能，使后加入房间者可以自动获取房间里的内容</li>
+                        <li>增加设置角色接口，任何时候可设置主持人和游客角色</li>
+                        <li>增加连接成功和断开连接的事件</li>
+                    </ul>
+                </div>
+                <div class="improvement">
+                    <strong>完善功能：</strong>
+                    <ul class="feature-list">
+                        <li>服务器端改成了完全端口模型，使其它具有更好的并发性</li>
+                        <li>修改捉取屏幕时，点击右键程序退出的错误</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="update-item">
+                <h3 class="version-title">WhiteBoard 2.0 演示版本</h3>
+                <div class="version-date">2007/09/28</div>
+                <div class="addition">
+                    <strong>增加的功能:</strong>
+                    <ul class="feature-list">
+                        <li>增加填充工具，可对选择的图元进行填充</li>
+                        <li>增加插入图片功能并可自由移动</li>
+                        <li>文字功能可选择字体及颜色</li>
+                        <li>增加截屏功能</li>
+                        <li>加增批注工具</li>
+                        <li>增加撤消功能</li>
+                    </ul>
+                </div>
+                <div class="improvement">
+                    <strong>完善的功能:</strong>
+                    <ul class="feature-list">
+                        <li>房间ID改为32为的guid字符串形式，当客户端请求加入的房间未创建的时候，服务器端自动创建该房间，不需要服务器端预先创建该项房间。以往的版本则如果服务器端没有预先创建该房间，则加入房间失败</li>
+                        <li>对图片传输算法进行了优化，使得在较差的网络环境下依然能把图片传送出去</li>
+                        <li>对界面进行了比较大的美化修改</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="update-item">
+                <h3 class="version-title">WhiteBoard 1.4 演示版本</h3>
+                <div class="version-date">2007/04/06</div>
+                <div class="addition">
+                    <strong>增加的功能:</strong>
+                    <ul class="feature-list">
+                        <li>使用选择器选择一个对象的时候，显示虚线框，并且可以通过拉伸虚线框的边框来调整所选对象的大小</li>
+                        <li>擦除指示器-----增加清除指示器的功能。使用橡皮擦工具可以清除指示器</li>
+                        <li>可选择背景色并填充图形背景--在"颜色设置"按钮中可以设置前景色和背景色，前景色为各类线条、边框和文字颜色，背景色为封闭图形的填充颜色</li>
+                    </ul>
+                </div>
+                <div class="improvement">
+                    <strong>完善的功能:</strong>
+                    <ul class="feature-list">
+                        <li>修改了客户端界面刷新时闪烁的问题</li>
+                        <li>修正了在非100%视图下画曲线的时候，其它客户端的显示的位置对不上的问题</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="update-item">
+                <h3 class="version-title">WhiteBoard 1.2 演示版本</h3>
+                <div class="version-date">2007/01/14</div>
+                <ul class="feature-list">
+                    <li>对客户端控件重新封装，取消了packwb.ocx容器，直接使用wbboard.ocx，使得可以直接在vb6，delphi7，vc2003及.net环境里直接调用，解决了1.0版本只能在vc和网页环境里被调用的问题</li>
+                    <li>提供了客户端在vb6，delphi7，vc2003环境是的调用演示工程代码</li>
+                </ul>
+            </div>
+
+            <div class="update-item">
+                <h3 class="version-title">WhiteBoard 1.0 演示版本</h3>
+                <div class="version-date">2006/10/28</div>
+                <p>初始版本发布</p>
+            </div>
+        </div>
+
+        <!-- 专业版更新记录 -->
+        <div class="version-content" id="professional">
+            <div class="update-item">
+                <h3 class="version-title">eBoard 1.0.18 演示版</h3>
+                <div class="version-date">2013/05/08</div>
+                <a href="download/eBoard_v1.0.18_Demo.rar" class="btn" style="display: inline-block; width: auto; margin: 0.5rem 0;">下载专业版</a>
+                <div class="addition">
+                    <strong>增加功能：</strong>
+                    <ul class="feature-list">
+                        <li>保存格式增加对bmp和jpeg格式的支持</li>
+                        <li>单击预览页会跳到对应的页面</li>
+                        <li>增加对office2007及以上的格式支持</li>
+                    </ul>
+                </div>
+                <div class="improvement">
+                    <strong>完善功能：</strong>
+                    <ul class="feature-list">
+                        <li>修复打开白板文件时只能打开一页的问题</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="update-item">
+                <h3 class="version-title">eBoard 1.0.1 演示版</h3>
+                <div class="version-date">2010/12/07</div>
+                <div class="addition">
+                    <strong>在个人版的基础上主要增加以下功能：</strong>
+                    <ul class="feature-list">
+                        <li>支持屏幕录制</li>
+                        <li>支持图形可任意旋转，变形而不失真</li>
+                        <li>支持多页白板</li>
+                        <li>支持网页弹出窗口</li>
+                        <li>支持保存为白板文件</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 单机版更新记录 -->
+        <div class="version-content" id="standalone">
+            <div class="update-item">
+                <h3 class="version-title">eBoard 1.0.7 演示版</h3>
+                <div class="version-date">2013/06/03</div>
+                <p>正式版发布</p>
+                <a href="download/iboard_setup_v1.0.7_demo.rar" class="btn" style="display: inline-block; width: auto; margin: 0.5rem 0;">下载单机版</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 电子白板控件. 保留所有权利.</p>
+        </div>
+    </footer>
+
+    <script>
+        function showVersion(version) {
+            // 隐藏所有版本内容
+            document.querySelectorAll('.version-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // 移除所有标签的激活状态
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // 显示选中的版本内容
+            document.getElementById(version).classList.add('active');
+            
+            // 激活选中的标签
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>

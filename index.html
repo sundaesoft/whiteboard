@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>电子白板控件 - 产品介绍</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            background-color: rgba(255,255,255,0.2);
+        }
+        
+        .hero {
+            background: white;
+            padding: 4rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .content-section {
+            background: white;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .content-section h2 {
+            color: #667eea;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #eee;
+        }
+        
+        .content-section h3 {
+            color: #764ba2;
+            margin: 1.5rem 0 1rem 0;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .feature-item {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .version-badges {
+            display: flex;
+            gap: 1rem;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .badge {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+        
+        .badge.personal {
+            background: #e3f2fd;
+            color: #1976d2;
+        }
+        
+        .badge.pro {
+            background: #f3e5f5;
+            color: #7b1fa2;
+        }
+        
+        .badge.standalone {
+            background: #e8f5e8;
+            color: #388e3c;
+        }
+        
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">电子白板控件</div>
+                <ul class="nav-links">
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="updates.html">下载</a></li>
+                    <li><a href="pricing.html">价格</a></li>
+                    <li><a href="contact.html">联系方式</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>电子白板控件解决方案</h1>
+            <p>基于C/S结构的成熟模块产品，适用于视频会议、教学等多人实时协作场景</p>
+            <div class="version-badges">
+                <span class="badge personal">个人版</span>
+                <span class="badge pro">专业版</span>
+                <span class="badge standalone">单机版</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <section class="content-section">
+            <h2>产品介绍</h2>
+            <p>电子白板控件是一套基于C/S结构的可应用于视频会议，教学等需要多人实时协助操作的成熟模块产品。其界面简单易用，除基本的画图功能外，还具有IE协同浏览，文档共享浏览及批注功能，最大程度地满足了不同场合的实际需要。</p>
+            <p>同时我们提供完整的源代码及相应开发文档，使你可以通过修改来满足实际的需要。</p>
+        </section>
+
+        <section class="content-section">
+            <h2>功能特性</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h3>基本画图功能</h3>
+                    <p>直线，曲线，圆，椭圆，矩形，圆角矩形，橡皮擦，文字，标记，指示器，插入图片，屏幕截图</p>
+                </div>
+                <div class="feature-item">
+                    <h3>多人协作</h3>
+                    <p>支持多页白板，多人IE协同浏览及批注，多人文档共享及批注</p>
+                </div>
+                <div class="feature-item">
+                    <h3>文档支持</h3>
+                    <p>支持流行的图片格式(Bmp，Jpeg，Gif)，数据文档(Word，Excel，PowerPoint，PDF，txt)</p>
+                </div>
+                <div class="feature-item">
+                    <h3>高级功能</h3>
+                    <p>打印文档，保存文档为白板文件，支持屏幕录制，服务器端可创建多个房间</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>核心特性</h2>
+            <div class="feature-item">
+                <h3>C/S架构设计</h3>
+                <p>本产品采用C/S结构，通过服务器进行中转，既可应用于局域网，也可应用于互联网。服务器端采用完全端口模式，最大限度地满足大规模并发性的要求。</p>
+            </div>
+            <div class="feature-item">
+                <h3>可扩展性强</h3>
+                <p>可让您快速的在其基础上增加功能，以满足不同用户的功能需要。服务器端及客户端均封装成DLL及OCX，调用方便，性能稳定。</p>
+            </div>
+            <div class="feature-item">
+                <h3>浏览器支持</h3>
+                <p>支持浏览器调用，大大缩短您的项目开发周期。</p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>开发环境</h2>
+            <p><strong>开发工具：</strong>Microsoft Visual Studio .NET 2003 (vc7.1)</p>
+            <p><strong>运行环境：</strong>Windows 2000或以上版本</p>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 电子白板控件. 保留所有权利.</p>
+        </div>
+    </footer>
+</body>
+</html>
